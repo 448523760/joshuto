@@ -65,7 +65,6 @@ pub fn process_noninteractive(event: AppEvent, context: &mut AppContext) {
         AppEvent::IoWorkerResult(res) => process_finished_worker(context, res),
         AppEvent::PreviewDir { id, path, res } => process_dir_preview(context, id, path, *res),
         AppEvent::PreviewFile { path, res } => process_file_preview(context, path, *res),
-        AppEvent::Signal(signal::SIGWINCH) => {}
         AppEvent::Filesystem(e) => process_filesystem_event(e, context),
         AppEvent::ChildProcessComplete(child_id) => {
             context.worker_context_mut().join_child(child_id);
